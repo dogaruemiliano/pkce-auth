@@ -1,17 +1,19 @@
+REDIRECT_URI = 'exp://192.168.0.107:19000'
+
 puts '-' * 80
 
 if Doorkeeper::Application.count.zero?
   puts 'Creating Apps...'
   puts 'Creating App for iOS'
-  app = Doorkeeper::Application.create!(name: 'iOS client', redirect_uri: 'exp://192.168.0.107:19000', scopes: ['read', 'write'])
+  app = Doorkeeper::Application.create!(name: 'iOS client', redirect_uri: REDIRECT_URI, scopes: %w[read write])
   puts "App Id: #{app.uid}"
   puts "App Secret: #{app.secret}"
   puts 'Creating App for Android'
-  app = Doorkeeper::Application.create!(name: 'Android client', redirect_uri: 'exp://192.168.0.107:19000', scopes: ['read', 'write'])
+  app = Doorkeeper::Application.create!(name: 'Android client', redirect_uri: REDIRECT_URI, scopes: %w[read write])
   puts "App Id: #{app.uid}"
   puts "App Secret: #{app.secret}"
   puts 'Creating App for React'
-  app = Doorkeeper::Application.create!(name: 'React', redirect_uri: 'exp://192.168.0.107:19000', scopes: ['read', 'write'])
+  app = Doorkeeper::Application.create!(name: 'React', redirect_uri: REDIRECT_URI, scopes: %w[read write])
   puts "App Id: #{app.uid}"
   puts "App Secret: #{app.secret}"
   puts 'Created Apps'
